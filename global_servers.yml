@@ -1,0 +1,97 @@
+version: '2'
+services:
+  mailcatcher:
+    container_name: mailcatcher
+    image: schickling/mailcatcher
+    ports:
+      - "18090:1080"
+    networks:
+      - ts_stack
+
+  hornetq:
+    container_name: hornetq
+    image: mansante/hornetq:2.4.0-dev
+    ports:
+      - "5445:5445"
+    networks:
+      - ts_stack
+
+  postgres:
+    container_name: postgres
+    build:
+      context: ./
+      dockerfile: PG_DF
+    image: tradeshiftpostgres
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "tradeshift"
+      POSTGRES_PASSWORD: "123"
+    volumes:
+      - $HOME/DockerData/Tradeshift/postgres:/var/lib/postgresql/data
+    command: postgres -c config_file=/etc/postgresql.conf
+    networks:
+      - ts_stack
+
+  docdb:
+    container_name: riak
+    image: dasudian/riak
+    ports:
+      - "8087:8087"
+      - "8098:8098"
+    volumes:
+      - $HOME/DockerData/Tradeshift/riak:/var/lib/riak
+    networks:
+      - ts_stack
+
+  elasticsearch1:
+    container_name: elasticsearch1
+    build:
+      context: ./
+      dockerfile: ES_DF
+    image: elasticsearch17corsoff
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - $HOME/DockerData/Tradeshift/es1/data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - ts_stack
+
+  elasticsearch2:
+    container_name: elasticsearch2
+    build:
+      context: ./
+      dockerfile: ES_DF
+    image: elasticsearch17corsoff
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch1"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - $HOME/DockerData/Tradeshift/es2/data:/usr/share/elasticsearch/data
+    networks:
+      - ts_stack
+
+  eshead:
+    image: mobz/elasticsearch-head:2
+    ports:
+      - "9100:9100"
+    container_name: eshead
+    networks:
+      - ts_stack
+
+networks:
+  ts_stack:
