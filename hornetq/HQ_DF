@@ -1,0 +1,6 @@
+FROM mansante/hornetq:2.4.0
+ADD  hornetq-configuration.xml $HORNETQ_HOME/config/stand-alone/non-clustered
+ADD  hornetq-jms.xml $HORNETQ_HOME/config/stand-alone/non-clustered
+ADD  logging.properties $HORNETQ_HOME/config/stand-alone/non-clustered
+ADD  run.sh $HORNETQ_HOME/bin/
+RUN  chmod 777 $HORNETQ_HOME/bin/run.sh

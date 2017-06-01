@@ -10,7 +10,10 @@ services:
 
   hornetq:
     container_name: hornetq
-    image: mansante/hornetq:2.4.0-dev
+    build:
+      context: ./hornetq
+      dockerfile: HQ_DF
+    image: tradeshifthornetq
     ports:
       - "5445:5445"
     networks:
@@ -19,7 +22,7 @@ services:
   postgres:
     container_name: postgres
     build:
-      context: ./
+      context: ./postgres
       dockerfile: PG_DF
     image: tradeshiftpostgres
     expose:
@@ -49,7 +52,7 @@ services:
   elasticsearch1:
     container_name: elasticsearch1
     build:
-      context: ./
+      context: ./elasticsearch
       dockerfile: ES_DF
     image: elasticsearch17corsoff
     environment:
@@ -63,6 +66,7 @@ services:
       - $HOME/DockerData/Tradeshift/es1/data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
+      - "9300:9300"
     networks:
       - ts_stack
 

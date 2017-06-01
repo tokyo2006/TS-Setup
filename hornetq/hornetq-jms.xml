@@ -1,0 +1,198 @@
+<configuration xmlns="urn:hornetq"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="urn:hornetq /schema/hornetq-jms.xsd">
+   <!--the connection factory used by the example-->
+   <connection-factory name="hornetQConnectionFactory">
+      <connectors>
+         <connector-ref connector-name="netty"/>
+      </connectors>
+      <entries>
+         <entry name="hornetQConnectionFactory"/>
+      </entries>
+      <reconnect-attempts>-1</reconnect-attempts>
+      <!-- Set the consumer window size to 0 to have *no* buffer on the client side -->
+      <consumer-window-size>0</consumer-window-size>
+   </connection-factory>
+
+	<queue name="ftp">
+		<entry name="/queue/ftp" />
+	</queue>
+	<queue name="http">
+		<entry name="/queue/http" />
+	</queue>
+	<queue name="peppol">
+		<entry name="/queue/peppol" />
+	</queue>
+	<queue name="finnishvanspagerogateway">
+		<entry name="/queue/finnishvanspagerogateway" />
+	</queue>
+
+	<queue name="asyncProcessing">
+		<entry name="/queue/asyncProcessing" />
+	</queue>
+	
+	<queue name="mailDestination">
+		<entry name="/queue/mailDestination" />
+	</queue>
+	<queue name="failedMails">
+		<entry name="/queue/failedMails" />
+	</queue>
+
+
+	<queue name="SentMailLogDestination">
+		<entry name="/queue/SentMailLogDestination" />
+	</queue>
+	
+
+	<queue name="dispatchResponses">
+		<entry name="/queue/dispatchResponses" />
+	</queue>
+	<queue name="resend">
+		<entry name="/queue/resend" />
+	</queue>
+	<queue name="notifications">
+		<entry name="/queue/notifications" />
+	</queue>
+	<queue name="veryDeadLetters">
+		<entry name="/queue/deadLetters" />
+	</queue>
+	<queue name="deadLetters">
+		<entry name="/queue/veryDeadLetters" />
+	</queue>
+	<queue name="userDelete">
+		<entry name="/queue/userDelete" />
+	</queue>
+	
+	
+	<queue name="internalDispatchInvoice">
+		<entry name="/queue/internalDispatchInvoice" />
+	</queue>
+	<queue name="internalDispatchNetworkRequest">
+		<entry name="/queue/internalDispatchNetworkRequest" />
+	</queue>
+	<queue name="internalDispatchNetworkRequestRequest">
+		<entry name="/queue/internalDispatchNetworkRequestRequest" />
+	</queue>
+	<queue name="internalDispatchNetworkResponse">
+		<entry name="/queue/internalDispatchNetworkResponse" />
+	</queue>
+	<queue name="internalDispatchDocumentProfileRequest">
+		<entry name="/queue/internalDispatchDocumentProfileRequest" />
+	</queue>
+	<queue name="internalDispatchDocumentProfileResponse">
+		<entry name="/queue/internalDispatchDocumentProfileResponse" />
+	</queue>
+	<queue name="internalDispatchComment">
+		<entry name="/queue/internalDispatchComment" />
+	</queue>
+	<queue name="internalDispatchCreditNote">
+		<entry name="/queue/internalDispatchCreditNote" />
+	</queue>
+	<queue name="internalDispatchOrder">
+		<entry name="/queue/internalDispatchOrder" />
+	</queue>
+	<queue name="internalDispatchQuotation">
+		<entry name="/queue/internalDispatchQuotation" />
+	</queue>
+	<queue name="internalDispatchApplicationMessage">
+		<entry name="/queue/internalDispatchApplicationMessage" />
+	</queue>
+	<queue name="internalDispatchApplicationResponse">
+		<entry name="/queue/internalDispatchApplicationResponse" />
+	</queue>
+	<queue name="internalDispatchOrderChange">
+		<entry name="/queue/internalDispatchOrderChange" />
+	</queue>
+	<queue name="internalDispatchReminder">
+		<entry name="/queue/internalDispatchReminder" />
+	</queue>
+	<queue name="internalDispatchRemittanceAdvice">
+		<entry name="/queue/internalDispatchRemittanceAdvice" />
+	</queue>
+	<queue name="internalDispatchReceiptAdvice">
+		<entry name="/queue/internalDispatchReceiptAdvice" />
+	</queue>
+	<queue name="internalDispatchSupplierInfo">
+		<entry name="/queue/internalDispatchSupplierInfo" />
+	</queue>
+	<queue name="internalDispatchScanningTokenRequest">
+		<entry name="/queue/internalDispatchScanningTokenRequest" />
+	</queue>
+	<queue name="internalDispatchScanningTokenResponse">
+		<entry name="/queue/internalDispatchScanningTokenResponse" />
+	</queue>
+	<queue name="internalDispatchSecurityGroupMembershipRequest">
+		<entry name="/queue/internalDispatchSecurityGroupMembershipRequest" />
+	</queue>
+    <queue name="internalDispatchSupplierOnboardingRequest">
+        <entry name="/queue/internalDispatchSupplierOnboardingRequest" />
+    </queue>
+
+
+	<queue name="internal">
+		<entry name="/queue/internal" />
+	</queue>
+	<queue name="internalPassive">
+		<entry name="/queue/internalPassive" />
+	</queue>
+	<queue name="passive">
+		<entry name="/queue/passive" />
+	</queue>
+	<queue name="recommendationRequests">
+		<entry name="/queue/recommendationRequests" />
+	</queue>
+	<queue name="recommendations">
+		<entry name="/queue/recommendations" />
+	</queue>
+	
+
+	<queue name="nemhandel">
+		<entry name="/queue/nemhandel" />
+	</queue>
+	<queue name="vansgateway">
+		<entry name="/queue/vansgateway" />
+	</queue>
+
+	<queue name="external">
+		<entry name="/queue/external" />
+	</queue>
+
+	<queue name="document-index-update">
+		<entry name="/queue/document-index-update" />
+	</queue>
+	<queue name="document-index-check">
+		<entry name="/queue/document-index-check" />	
+	</queue>
+
+    <queue name="customers">
+        <entry name="/queue/customers" />
+    </queue>
+	
+	<topic name="business-events">
+		<entry name="/topic/business-events" />
+	</topic>
+	<topic name="eventBroadcast">
+		<entry name="/topic/eventBroadcast" />
+	</topic>
+
+	<!--  workflow shit -->
+	<queue name="workflowDeadLetters">
+		<entry name="/queue/workflowDeadLetters" />
+	</queue>
+	<queue name="validationRequests">
+		<entry name="/queue/validationRequests" />
+	</queue>
+	
+	<!-- business event service -->
+	<topic name="testTopic">
+		<entry name="/topic/testTopic" />
+	</topic>
+
+	<!-- testing only - don't include in prod -->
+	<queue name="test">
+		<entry name="/queue/test" />
+	</queue>
+	<queue name="somewhere">
+		<entry name="/queue/somewhere" />
+	</queue>
+</configuration>
