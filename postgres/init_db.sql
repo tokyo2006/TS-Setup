@@ -16,3 +16,4 @@ CREATE DATABASE "apps" OWNER=porta;
 CREATE DATABASE "product-engine-supplier" OWNER=porta;
 CREATE DATABASE "portaudit" OWNER=porta;
 CREATE DATABASE "proforma" OWNER=porta;
+CREATE DATABASE "selfbilledinvoicelines" OWNER=porta;

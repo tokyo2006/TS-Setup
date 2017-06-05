@@ -53,10 +53,11 @@ services:
     container_name: elasticsearch1
     build:
       context: ./elasticsearch
-      dockerfile: ES_DF
-    image: elasticsearch17corsoff
+      dockerfile: ES_DF_1
+    image: tradeshifelasticsearch1
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "es.node.name=elasticsearch1"
     ulimits:
       memlock:
         soft: -1
@@ -73,9 +74,9 @@ services:
   elasticsearch2:
     container_name: elasticsearch2
     build:
-      context: ./
-      dockerfile: ES_DF
-    image: elasticsearch17corsoff
+      context: ./elasticsearch
+      dockerfile: ES_DF_2
+    image: tradeshifelasticsearch2
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "discovery.zen.ping.unicast.hosts=elasticsearch1"
