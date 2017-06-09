@@ -1,0 +1,2 @@
+FROM elasticsearch:1.7.6-alpine
+COPY elasticsearch2.yml /usr/share/elasticsearch/elasticsearch.yml
