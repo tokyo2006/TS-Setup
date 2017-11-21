@@ -40,7 +40,7 @@ services:
 
   docdb:
     container_name: riak
-    image: dasudian/riak
+    image: sanderli/riak-1.4.12
     ports:
       - "8087:8087"
       - "8098:8098"
@@ -87,6 +87,9 @@ services:
     mem_limit: 1g
     volumes:
       - $HOME/DockerData/Tradeshift/es2/data:/usr/share/elasticsearch/data
+    ports:
+      - "9201:9200"
+      - "9301:9300"
     networks:
       - ts_stack
 
